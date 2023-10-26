@@ -1,37 +1,22 @@
-package com.sample;
+package org.example;
 
 
-public class Usuario {
+import jakarta.persistence.*;
+import lombok.Data;
+import lombok.Generated;
 
-  private long id;
+import java.io.Serializable;
+
+@Data
+//Necesario para almacenar en la base de datos. (Entidad perteneciente a la base de datos)
+@Entity
+//Nombre de la tabla en la que vas a insertar.
+@Table (name = "usuario")
+public class Usuario implements Serializable {
+  @Id
+  //Para indicarle a Hibernate que el atributo de abajo es el id
+  @GeneratedValue( strategy = GenerationType.IDENTITY)
+  private Long id;
   private String nombre;
   private String email;
-
-
-  public long getId() {
-    return id;
-  }
-
-  public void setId(long id) {
-    this.id = id;
-  }
-
-
-  public String getNombre() {
-    return nombre;
-  }
-
-  public void setNombre(String nombre) {
-    this.nombre = nombre;
-  }
-
-
-  public String getEmail() {
-    return email;
-  }
-
-  public void setEmail(String email) {
-    this.email = email;
-  }
-
 }
